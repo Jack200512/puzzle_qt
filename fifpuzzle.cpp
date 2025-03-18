@@ -1,5 +1,6 @@
 #include "fifpuzzle.h"
 #include "ui_fifpuzzle.h"
+#include <QDebug>
 
 fifpuzzle::fifpuzzle(QWidget *parent) :
     QMainWindow(parent),
@@ -31,11 +32,13 @@ fifpuzzle::fifpuzzle(QWidget *parent) :
     clickablevec.resize(16,0);
 
 //    connect(qbgptr, QOverload<int>::of(&QButtonGroup::buttonClicked),this, &fifpuzzle::movefun);
-    QObject::connect(qbgptr, QOverload<int>::of(&QButtonGroup::buttonClicked),[&](int id) { movefun(id, currentboard); });
+    connect(qbgptr, QOverload<int>::of(&QButtonGroup::buttonClicked),[&](int id) { movefun(id, currentboard); });
 
     connect(ui->solveandshow,&QPushButton::clicked,this,&fifpuzzle::solveandshow);
 
-//    connect(&currentboard,&board::updatewhilesolving,this,&fifpuzzle::solveandshowdisplay);
+    connect(&currentboard,&board::updatesig,this,&fifpuzzle::addtoclickqueue);
+
+    connect(&currentboard,&board::solvedone,this,&fifpuzzle::startupdatingui);
 
 
     currentboard.suffle();
@@ -60,10 +63,10 @@ void fifpuzzle::setupscreenwithboard(board & boardref)
     }
 }
 
-void fifpuzzle::updatescreen(board & currentboard)
-{
-    currentboard.emp_squ_pos;
-}
+//void fifpuzzle::updatescreen(board & currentboard)
+//{
+//    currentboard.emp_squ_pos;
+//}
 
 int fifpuzzle::pairtoindex(pair<int, int> pairforpro)
 {
@@ -83,6 +86,7 @@ pair<int,int> fifpuzzle::indextopair(int index)
 
 void fifpuzzle::movefun(int id,board& currentboar)
 {
+
     //update the clickable vector first.
     updateclickablevec();
 
@@ -126,6 +130,20 @@ void fifpuzzle::movefun(int id,board& currentboar)
 
 }
 
+void fifpuzzle::updatechart_show(int idinput)
+{
+    //get the pos with input;
+    pair<int,int> pos = indextopair(idinput);
+    int value = currentboard.chartaftersuffle[pos.second][pos.first];
+
+    //at the first time, the empposchart2 doesnt need update.
+
+    currentboard.chartaftersuffle[currentboard.empposinchart2.second][currentboard.empposinchart2.first] = value;
+    currentboard.chartaftersuffle[pos.second][pos.first] = 0;
+
+    currentboard.empposinchart2 = pos;
+}
+
 void fifpuzzle::updateclickablevec()
 {
     //clear the former data in the vec.
@@ -152,18 +170,49 @@ void fifpuzzle::solveandshow()
 {
     currentboard.solveandshowclicked = true;
     for (int i = 1; i <= 9; i++)
-        {
-            currentboard.circlemethod(i);
-        }
+    {
+        currentboard.circlemethod(i);
+    }
     currentboard.solveten();
     currentboard.solveeleven();
     currentboard.solvetwelve();
     currentboard.solverest();
 }
 
-void fifpuzzle::solveandshowdisplay(int id)
+void fifpuzzle::addtoclickqueue(int id)
 {
-    qbgptr->button(id)->click();
+    clickqueue.push(id);
+}
+
+void fifpuzzle::startupdatingui()
+{
+    int length = clickqueue.size();
+    if(length ==0) return;
+
+    int idforupdate = clickqueue.front();
+    clickqueue.pop();
+
+    qDebug() << "Setting singleShot timer";
+    QTimer::singleShot(1000, [=]()
+    {
+        qDebug() << "Executing button click for id:" << idforupdate;
+        movefunv2(idforupdate);
+
+            // 继续执行下一个点击操作
+        startupdatingui();
+    });
+
+}
+
+void fifpuzzle::movefunv2(int id)
+{
+    pair<int,int> movedsquare = indextopair(id);
+    int empindex = pairtoindex(currentboard.empposinchart2);
+
+    int container = currentboard.getvaluebypair(movedsquare,currentboard.chartaftersuffle);
+    qbgptr->button(empindex)->setText(QString::number(container));
+    qbgptr->button(id)->setText("   ");
+    updatechart_show(id);
 }
 
 fifpuzzle::~fifpuzzle()

@@ -5,13 +5,24 @@
 #include <iostream>
 #include <utility>
 #include <stack>
+#include <QObject>
+#include <QTimer>
+#include <QQueue>
 
 using namespace std;
 
-class board
+class board : public QObject
 {
 
+    Q_OBJECT
+signals:
+
+    void updatesig(int);
+    void solvedone();
+
 public:
+
+    explicit board(int size = 4, QObject *parent = nullptr);
 
     int size;
 
@@ -21,6 +32,8 @@ public:
 
     vector<vector<int>> chart;
 
+    vector<vector<int>> chartaftersuffle;
+
     vector<vector<int>> moveablecheck;
 
     vector<vector<int>> rightposrecord;
@@ -28,6 +41,8 @@ public:
     vector<bool> isset;
 
     pair<int, int> emp_squ_pos;
+
+    pair<int, int> empposinchart2;
 
     int lastmovedvalue = -1;
 
@@ -44,9 +59,9 @@ public:
 
     vector<vector<int>> chartphoto;
 
-    board();
+//    board();
 
-    board(int size);
+//    board(int size);
 
     void solveindumbway();
 
@@ -137,6 +152,9 @@ public:
     void solverest();
 
     string textformatter(int);
+
+    //for updating ui while swapping
+
 };
 
 #endif // BOARD_H

@@ -9,6 +9,8 @@
 #include "QButtonGroup"
 #include "QString"
 #include <vector>
+#include <queue>
+#include "QTimer"
 
 
 namespace Ui {
@@ -35,16 +37,20 @@ private:
     void setupscreenwithboard(board&);
     void updatescreen(board &);
     void movefun(int,board&);
+    void movefunv2(int);
     int pairtoindex(pair<int,int>);
     pair<int,int> indextopair(int);
     void updateclickablevec();
+    void updatechart_show(int);
 
-    void solveandshow();
 
     vector<int> clickablevec;
+    queue<int> clickqueue;
 
 public slots:
-    void solveandshowdisplay(int);
+    void addtoclickqueue(int);
+    void solveandshow();
+    void startupdatingui();
 };
 
 #endif // FIFPUZZLE_H

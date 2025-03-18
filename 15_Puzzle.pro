@@ -24,14 +24,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        fifpuzzle.cpp \
-    board.cpp
+           fifpuzzle.cpp\
+           board.cpp
 
 
-HEADERS  += fifpuzzle.h \
-    board.h
+HEADERS  += fifpuzzle.h\
+            board.h
 
 FORMS    += fifpuzzle.ui
 
 DISTFILES += \
 
+QMAKE_CXXFLAGS_RELEASE += -O0

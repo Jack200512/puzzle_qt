@@ -24,41 +24,9 @@ int getRandomInt()
     return dist(gen); // 生成并返回随机数
 }
 
-board::board()
-{
-    int size = 4;
-    chart.resize(size);
-    for (int iforvec = 0; iforvec < size; iforvec++)
-    {
-        chart[iforvec].resize(size);
-    }
 
-    int writenum = 1;
-    for (int i = 0; i < size; i++)
-    {
-        for (int ini = 0; ini < size; ini++)
-        {
-            chart[i][ini] = writenum;
-            writenum++;
-        }
-    }
 
-    chart[3][3] = 0;
-
-    moveablecheck = chart;
-
-    rightposrecord = chart;
-
-    for (auto &row : moveablecheck)
-    {
-        std::fill(row.begin(), row.end(), 1);
-    }
-
-    emp_squ_pos.first = 3;
-    emp_squ_pos.second = 3;
-}
-
-board::board(int realsize) : size(realsize)
+board::board(int size, QObject *parent) : QObject(parent), size(size)
 {
     chart.resize(size);
     for (int iforvec = 0; iforvec < size; iforvec++)
@@ -89,6 +57,7 @@ board::board(int realsize) : size(realsize)
 
     emp_squ_pos.first = 3;
     emp_squ_pos.second = 3;
+
 }
 
 void board::showforinitial()
@@ -100,41 +69,41 @@ void board::showforinitial()
         {
             if (counter > 0)
             {
-                cout << "0" << chart[i][ini] << " ";
+                //cout << "0" << chart[i][ini] << " ";
             }
             else
             {
-                cout << chart[i][ini] << " ";
+                //cout << chart[i][ini] << " ";
             }
             counter--;
         }
 
-        cout << endl;
+        //cout << endl;
     }
 }
 
 void board::generalshow()
 {
-    cout << endl;
+    //cout << endl;
     for (int i = 0; i < 4; i++)
     {
         for (int in = 0; in < 4; in++)
         {
             if (chart[i][in] == 0)
             {
-                cout << "  " << " ";
+                //cout << "  " << " ";
             }
             else if (chart[i][in] < 10)
             {
-                cout << "0" << chart[i][in] << " ";
+                //cout << "0" << chart[i][in] << " ";
             }
             else
             {
-                cout << chart[i][in] << " ";
+                //cout << chart[i][in] << " ";
             }
         }
 
-        cout << endl;
+        //cout << endl;
     }
 }
 
@@ -153,26 +122,26 @@ string board::textformatter(int input)
 
 void board::showchart(vector<vector<int>> &showch)
 {
-    cout << endl;
+    //cout << endl;
     for (int i = 0; i < 4; i++)
     {
         for (int in = 0; in < 4; in++)
         {
             if (showch[i][in] == 0)
             {
-                cout << "  " << " ";
+                //cout << "  " << " ";
             }
             else if (showch[i][in] < 10)
             {
-                cout << "0" << showch[i][in] << " ";
+                //cout << "0" << showch[i][in] << " ";
             }
             else
             {
-                cout << showch[i][in] << " ";
+                //cout << showch[i][in] << " ";
             }
         }
 
-        cout << endl;
+        //cout << endl;
     }
 }
 
@@ -194,7 +163,7 @@ void board::swaptoemp(pair<int, int> forswap)
     if(solveandshowclicked)
     {
         int id = forswap.second*4 + forswap.first;
-//        emit board::updatewhilesolving(id);
+        emit updatesig(id);
     }
 }
 
@@ -342,8 +311,12 @@ void board::suffle()
         chartphoto = chart; // take a photo after suffle;
 
         aftersuffle = true;
+
+        chartaftersuffle = chart;
+
+        empposinchart2 = emp_squ_pos;
         // generalshow();
-        // cout << endl;
+        // ////cout << endl;
     }
 }
 
@@ -375,7 +348,7 @@ void board::solveindumbway()
         movesquare(suffletrail.top());
         suffletrail.pop();
         generalshow();
-        cout << endl;
+        //cout << endl;
     }
 }
 
@@ -1118,7 +1091,7 @@ void board::solve1to8_ver1(int num)
         // find the path for empty square
         vector<pair<int, int>> trailforemp;
         trailforemp = findpathforemp(thetrailreal[i]);
-        cout << "Debug: trailforemp.size() = " << trailforemp.size() << endl;
+        //cout << "Debug: trailforemp.size() = " << trailforemp.size() << endl;
         for (int in = 0; in < trailforemp.size(); in++)
         {
             swaptoemp(trailforemp[in]);
@@ -1303,7 +1276,7 @@ void board::solveten()
         solvetenspecialcase = false;
 
         writebypair(searchbyvalue(9, rightposrecord), 0, moveablecheck);
-        cout << "10 special case;";
+        //cout << "10 special case;";
     }
     else
     {
@@ -1345,7 +1318,7 @@ void board::solveeleven()
 
         finalpath.push_back(step4);
         empgotrail(finalpath);
-        cout << "11-special case 1" << endl;
+        //cout << "11-special case 1" << endl;
     }
     else if (targetpos == special2)
     {
@@ -1364,7 +1337,7 @@ void board::solveeleven()
 
         finalpath.push_back(step4);
         empgotrail(finalpath);
-        cout << "11-special case 2" << endl;
+        //cout << "11-special case 2" << endl;
     }
     else
     {
@@ -1418,7 +1391,7 @@ void board::solvetwelve()
         emptrail = pathgeneratorbypoint(forgene);
         emptrail.push_back(step4);
         empgotrail(emptrail);
-        cout << "12-special case 1;" << endl;
+        //cout << "12-special case 1;" << endl;
     }
     else if (spcase2)
     {
@@ -1436,7 +1409,7 @@ void board::solvetwelve()
         emptrail = pathgeneratorbypoint(forgene);
         emptrail.push_back(step4);
         empgotrail(emptrail);
-        cout << "12-special case 2" << endl;
+        //cout << "12-special case 2" << endl;
     }
     else if (spcase3)
     {
@@ -1454,7 +1427,7 @@ void board::solvetwelve()
         emptrail = pathgeneratorbypoint(forgene);
         emptrail.push_back(step4);
         empgotrail(emptrail);
-        cout << "12-special case 3" << endl;
+        //cout << "12-special case 3" << endl;
     }
     else
     {
@@ -1471,8 +1444,8 @@ void board::solverest()
         pair<int, int> destination(3, 3);
         vector<pair<int, int>> finally = findpath(emp_squ_pos, destination);
         empgotrail(finally);
-        cout << "the problem is solved with luck!" << endl;
-        cout << "total steps for computer: " << totalstep << "." << endl;
+        //cout << "the problem is solved with luck!" << endl;
+        //cout << "total steps for computer: " << totalstep << "." << endl;
     }
     else
     {
@@ -1512,7 +1485,12 @@ void board::solverest()
         vector<pair<int, int>> step3vec = pathgeneratorbypoint_xversion(xforgene);
         empgotrail(step3vec);
 
-        cout << "the problem is finally solved!" << endl;
-        cout << "total steps for computer: " << totalstep << "." << endl;
+        emit solvedone();
+
+        //cout << "the problem is finally solved!" << endl;
+        //cout << "total steps for computer: " << totalstep << "." << endl;
     }
 }
+
+
+
