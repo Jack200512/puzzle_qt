@@ -136,6 +136,7 @@ void fifpuzzle::movefun(int id,board& currentboar)
 
         }
     }
+    updatetheprogressbar(currentboard.chart);
 
 }
 
@@ -179,21 +180,29 @@ void fifpuzzle::solveandshow()
 {
     //disable the button while solving.
 
+    currentboard.moveablecheck = currentboard.zeroformchart;
+
     currentboard.chartaftersuffle = currentboard.chart;
     currentboard.empposinchart2 = currentboard.emp_squ_pos;
 
     ui->sufflebut->setEnabled(false);
     ui->solveandshow->setEnabled(false);
 
-    qDebug() << "Button is enabled:" << ui->solveandshow->isEnabled();
-    qDebug() << "Button is enabled:" << ui->sufflebut->isEnabled();
+    foreach (QAbstractButton *button, qbgptr->buttons()) {
+        button->setEnabled(false);
+
+    }
+
+//    qDebug() << "Button is enabled:" << ui->solveandshow->isEnabled();
+//    qDebug() << "Button is enabled:" << ui->sufflebut->isEnabled();
 
     timeinsecond = 0;//every entry to this function causes the clearance of the timeinsecond.
+    stepcount = 0;
 
     currentboard.solveandshowclicked = true;
     for (int i = 1; i <= 9; i++)
     {
-        qDebug()<<"resolving"<<i;
+//        qDebug()<<"resolving"<<i;
         currentboard.circlemethod(i);
     }
     currentboard.solveten();
@@ -203,6 +212,8 @@ void fifpuzzle::solveandshow()
     //recover the function of the buttons.
     solvedonce = true;
 
+    currentboard.solveandshowclicked = false;
+    //the most important one : update the " record " within in the scope if there is a repeated task.
 }
 
 void fifpuzzle::addtoclickqueue(int id)
@@ -237,6 +248,10 @@ void fifpuzzle::startupdatingui()
         QTimer::singleShot(3000, this, [=]() {
             ui->sufflebut->setEnabled(true);
             ui->solveandshow->setEnabled(true);
+            foreach (QAbstractButton *button, qbgptr->buttons())
+            {
+                button->setEnabled(true);
+            }
         });
 
     }
@@ -260,7 +275,7 @@ void fifpuzzle::movefunv2(int id)
 
 void fifpuzzle::updatetheprogressbar(vector<vector<int>>&accordchart)
 {
-    qDebug()<<"enter updateprogressbar";
+//    qDebug()<<"enter updateprogressbar";
     //check how many square are set
 
     int settedsq = 0;

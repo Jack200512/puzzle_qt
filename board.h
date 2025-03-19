@@ -32,6 +32,9 @@ public:
 
     vector<vector<int>> chart;
 
+    vector<vector<int>> zeroformchart;
+
+
     vector<vector<int>> chartaftersuffle;
 
     vector<vector<int>> moveablecheck;

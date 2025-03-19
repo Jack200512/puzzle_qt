@@ -50,10 +50,14 @@ board::board(int size, QObject *parent) : QObject(parent), size(size)
 
     rightposrecord = chart;
 
+
+
     for (auto &row : moveablecheck)
     {
         std::fill(row.begin(), row.end(), 1);
     }
+
+    zeroformchart = moveablecheck;
 
     emp_squ_pos.first = 3;
     emp_squ_pos.second = 3;
