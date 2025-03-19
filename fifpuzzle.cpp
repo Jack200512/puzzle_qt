@@ -96,6 +96,12 @@ pair<int,int> fifpuzzle::indextopair(int index)
 void fifpuzzle::movefun(int id,board& currentboar)
 {
 
+    if(!userplaying)
+    {
+        startcountingtime();
+        userplaying = true;
+        stepcount = 0;//clear the stepcount;
+    }
     //update the clickable vector first.
     updateclickablevec();
 
@@ -138,6 +144,9 @@ void fifpuzzle::movefun(int id,board& currentboar)
     }
     updatetheprogressbar(currentboard.chart);
 
+    stepcount++;
+    ui->stepcounter->display(stepcount);
+
 }
 
 void fifpuzzle::updatechart_show(int idinput)
@@ -179,6 +188,15 @@ void fifpuzzle::updateclickablevec()
 void fifpuzzle::solveandshow()
 {
     //disable the button while solving.
+
+    solvetime ->stop();
+    timeinsecond = 0;
+    ui->timecount->display(0);
+
+    stepcount = 0;
+    ui->stepcounter->display(0);
+
+    userplaying = false;//if solve n show button clicked , it means user is not playing.
 
     currentboard.moveablecheck = currentboard.zeroformchart;
 
@@ -320,13 +338,25 @@ void fifpuzzle::updatetheprogressbar(vector<vector<int>>&accordchart)
 
     ui->progressbar->setValue(5*result);
 
+    if(result==20)
+    {
+        userplaying = false;//no matter the road it takes to reach the terminal , shift in state;
+    }
+
 }
 
 void fifpuzzle::suffleinwindow()
 {
+    userplaying = false;//suffle and solve both cause the state userplaying to false.
     currentboard.suffle();
     setupscreenwithboard(currentboard);
     updatetheprogressbar(currentboard.chart);
+
+    solvetime->stop();
+    ui->timecount->display(0);
+
+    stepcount = 0;
+    ui->stepcounter->display(0);
 }
 
 void fifpuzzle::updatesolvetime()
@@ -337,6 +367,7 @@ void fifpuzzle::updatesolvetime()
 
 void fifpuzzle::startcountingtime()
 {
+    timeinsecond = 0;
     solvetime->start(1000);
 }
 

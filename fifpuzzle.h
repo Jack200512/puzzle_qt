@@ -35,6 +35,8 @@ public:
 
     bool solvedonce = false;
 
+    bool userplaying = false;
+
 
 private:
     Ui::fifpuzzle *ui;
