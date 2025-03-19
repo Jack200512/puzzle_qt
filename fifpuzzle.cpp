@@ -31,21 +31,30 @@ fifpuzzle::fifpuzzle(QWidget *parent) :
 
     clickablevec.resize(16,0);
 
+    settedsquare.resize(16,0);
+    settedline.resize(4,0);
+
+    ui->progressbar->setValue(100);
+    setupscreenwithboard(currentboard);
+
+    timeinsecond = 0;
+    stepcount = 0;
+
+    solvetime = new QTimer(this);
+
+    connect(solvetime,&QTimer::timeout,this,&fifpuzzle::updatesolvetime);
+
 //    connect(qbgptr, QOverload<int>::of(&QButtonGroup::buttonClicked),this, &fifpuzzle::movefun);
     connect(qbgptr, QOverload<int>::of(&QButtonGroup::buttonClicked),[&](int id) { movefun(id, currentboard); });
 
-    connect(ui->solveandshow,&QPushButton::clicked,this,&fifpuzzle::solveandshow);
+    connect(ui->solveandshow,&QPushButton::clicked,this,&fifpuzzle::solveandshow,Qt::UniqueConnection);
+
+    connect(ui->sufflebut,&QPushButton::clicked,this,&fifpuzzle::suffleinwindow),Qt::UniqueConnection;
 
     connect(&currentboard,&board::updatesig,this,&fifpuzzle::addtoclickqueue);
 
     connect(&currentboard,&board::solvedone,this,&fifpuzzle::startupdatingui);
-
-
-    currentboard.suffle();
-    setupscreenwithboard(currentboard);
-
-
-
+    connect(&currentboard,&board::solvedone,this,&fifpuzzle::startcountingtime);
 
 }
 
@@ -168,15 +177,32 @@ void fifpuzzle::updateclickablevec()
 
 void fifpuzzle::solveandshow()
 {
+    //disable the button while solving.
+
+    currentboard.chartaftersuffle = currentboard.chart;
+    currentboard.empposinchart2 = currentboard.emp_squ_pos;
+
+    ui->sufflebut->setEnabled(false);
+    ui->solveandshow->setEnabled(false);
+
+    qDebug() << "Button is enabled:" << ui->solveandshow->isEnabled();
+    qDebug() << "Button is enabled:" << ui->sufflebut->isEnabled();
+
+    timeinsecond = 0;//every entry to this function causes the clearance of the timeinsecond.
+
     currentboard.solveandshowclicked = true;
     for (int i = 1; i <= 9; i++)
     {
+        qDebug()<<"resolving"<<i;
         currentboard.circlemethod(i);
     }
     currentboard.solveten();
     currentboard.solveeleven();
     currentboard.solvetwelve();
     currentboard.solverest();
+    //recover the function of the buttons.
+    solvedonce = true;
+
 }
 
 void fifpuzzle::addtoclickqueue(int id)
@@ -186,22 +212,38 @@ void fifpuzzle::addtoclickqueue(int id)
 
 void fifpuzzle::startupdatingui()
 {
+
+
     int length = clickqueue.size();
     if(length ==0) return;
 
     int idforupdate = clickqueue.front();
     clickqueue.pop();
 
-    qDebug() << "Setting singleShot timer";
-    QTimer::singleShot(1000, [=]()
+//    qDebug() << "Setting singleShot timer";
+    QTimer::singleShot(500, [=]()
     {
-        qDebug() << "Executing button click for id:" << idforupdate;
+//        qDebug() << "Executing button click for id:" << idforupdate;
         movefunv2(idforupdate);
 
             // 继续执行下一个点击操作
         startupdatingui();
     });
 
+    if(clickqueue.empty())
+    {
+        solvetime->stop();
+
+        QTimer::singleShot(3000, this, [=]() {
+            ui->sufflebut->setEnabled(true);
+            ui->solveandshow->setEnabled(true);
+        });
+
+    }
+
+    stepcount++;
+
+    ui->stepcounter->display(stepcount);
 }
 
 void fifpuzzle::movefunv2(int id)
@@ -213,6 +255,74 @@ void fifpuzzle::movefunv2(int id)
     qbgptr->button(empindex)->setText(QString::number(container));
     qbgptr->button(id)->setText("   ");
     updatechart_show(id);
+    updatetheprogressbar(currentboard.chartaftersuffle);
+}
+
+void fifpuzzle::updatetheprogressbar(vector<vector<int>>&accordchart)
+{
+    qDebug()<<"enter updateprogressbar";
+    //check how many square are set
+
+    int settedsq = 0;
+    int settedli = 0;
+    for(int i = 0;i<16;i++)
+    {
+        pair<int,int> pos = indextopair(i);
+        int valuecorrect = currentboard.getvaluebypair(pos,currentboard.rightposrecord);
+        int valuereal = currentboard.getvaluebypair(pos,accordchart);
+
+        if(valuecorrect == valuereal)
+        {
+            settedsquare[i] = 1;
+            settedsq++;
+        }
+
+
+    }
+
+    int settedcountinline= 0;
+    for(int check = 0;check<13;check+=4)
+    {
+        //check how many square on the same line is set;
+        for(int in = check;in < check+4;in++)
+        {
+            if(settedsquare[in]==1)
+            {
+                settedcountinline++;
+            }
+        }
+
+        if(settedcountinline==4)
+        {
+            settedline[check/4]= 1;
+            settedli++;
+        }
+        settedcountinline=0;
+
+    }
+
+    int result = settedsq+settedli;
+
+    ui->progressbar->setValue(5*result);
+
+}
+
+void fifpuzzle::suffleinwindow()
+{
+    currentboard.suffle();
+    setupscreenwithboard(currentboard);
+    updatetheprogressbar(currentboard.chart);
+}
+
+void fifpuzzle::updatesolvetime()
+{
+    timeinsecond++;
+    ui->timecount->display(timeinsecond);
+}
+
+void fifpuzzle::startcountingtime()
+{
+    solvetime->start(1000);
 }
 
 fifpuzzle::~fifpuzzle()

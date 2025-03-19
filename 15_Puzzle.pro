@@ -31,7 +31,8 @@ SOURCES += main.cpp\
 HEADERS  += fifpuzzle.h\
             board.h
 
-FORMS    += fifpuzzle.ui
+FORMS    +=  fifpuzzle.ui
+
 
 DISTFILES += \
 

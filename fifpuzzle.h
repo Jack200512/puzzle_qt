@@ -27,12 +27,23 @@ public:
 
     board currentboard;
 
+    QTimer * solvetime;
+
+    int timeinsecond;
+
+    int stepcount;
+
+    bool solvedonce = false;
+
+
 private:
     Ui::fifpuzzle *ui;
 
 //    QVector<QPushButton*> qpbgroup;
 
     QButtonGroup * qbgptr = new QButtonGroup(this);
+
+
 
     void setupscreenwithboard(board&);
     void updatescreen(board &);
@@ -46,11 +57,20 @@ private:
 
     vector<int> clickablevec;
     queue<int> clickqueue;
+    vector<int> settedsquare;
+    vector<int> settedline;
+
+    void updatetheprogressbar(vector<vector<int>>&);
+    void updatethestep();
+
 
 public slots:
     void addtoclickqueue(int);
     void solveandshow();
     void startupdatingui();
+    void suffleinwindow();
+    void updatesolvetime();
+    void startcountingtime();
 };
 
 #endif // FIFPUZZLE_H
