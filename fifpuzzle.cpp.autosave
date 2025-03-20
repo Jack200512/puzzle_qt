@@ -417,9 +417,6 @@ void fifpuzzle::dealwithclickqueue()
             int frontindex = posrecord[collect];
             int backindex = posrecord[collect+1];
 
-            int head = frontindex;
-            int tail = backindex;
-
             if(frontindex+2 != backindex)
             {
                 continue;
@@ -436,15 +433,10 @@ void fifpuzzle::dealwithclickqueue()
                     inspectvector[i] = -1;
                 }
             }
-
-
-
-
         }
         posrecord.clear();
 
     }
-
     //pouring valid num in inspectvec to queue again
     for(int pour = 0;pour <length;pour++)
     {

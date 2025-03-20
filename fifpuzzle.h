@@ -37,6 +37,8 @@ public:
 
     bool userplaying = false;
 
+    bool clickqueue_optimized = false;
+
 
 private:
     Ui::fifpuzzle *ui;
@@ -59,11 +61,14 @@ private:
 
     vector<int> clickablevec;
     queue<int> clickqueue;
+    queue<int> originalcq;
     vector<int> settedsquare;
     vector<int> settedline;
 
     void updatetheprogressbar(vector<vector<int>>&);
     void updatethestep();
+
+    void dealwithclickqueue();
 
 
 public slots:
