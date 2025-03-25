@@ -25,11 +25,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
            fifpuzzle.cpp\
-           board.cpp
+           board.cpp \
+    player.cpp \
+    challenge_dialog.cpp
 
 
 HEADERS  += fifpuzzle.h\
-            board.h
+            board.h \
+    player.h \
+    challenge_dialog.h
 
 FORMS    +=  fifpuzzle.ui
 

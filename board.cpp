@@ -7,7 +7,7 @@
 
 #include <QThread>
 
-
+bool pairisinthegroup(pair<int,int>,vector<pair<int,int>>);
 
 int randomchoose()
 {
@@ -515,6 +515,18 @@ vector<pair<int, int>> board::bypass_y(pair<int, int> start, bool up)
     }
 }
 
+bool pairisinthegroup(pair<int, int> pforcheck, vector<pair<int, int> >group)
+{
+    for(int i = 0;i< group.size();i++ )
+    {
+        if(pforcheck == group[i])
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
 void board::circletransportforemp(pair<int, int> center, pair<int, int> desire) // one step each time.
 {
     vector<pair<int, int>> circleindex; // vector for pos around.
@@ -562,7 +574,14 @@ void board::circletransportforemp(pair<int, int> center, pair<int, int> desire) 
         emptytocir = findpath(emp_squ_pos, center);
     }
 
+
+
     emptytocir.pop_back(); // delete the last one;
+
+    if(pairisinthegroup(emptytocir[emptytocir.size()-2],circleindex)&&!emptytocir.empty())
+    {
+        emptytocir.pop_back();
+    }
 
     empgotrail(emptytocir); // move empty to the circle.
 
@@ -581,54 +600,139 @@ void board::circletransportforemp(pair<int, int> center, pair<int, int> desire) 
         desirepos++;
     }
 
-    vector<pair<int, int>> thefinaltrailtomoveempt;
+//    vector<pair<int, int>> thefinaltrailtomoveempt;
 
-    // when we hit the wall , take another direction.
-    int empposcontainer = empposcir; // container for roll back;
-    bool success = false;
-    while (desirepos != empposcir)
+//    vector<pair<int,int>> thefinaltrail2;
+
+//    // when we hit the wall , take another direction.
+//    int empposcontainer = empposcir; // container for roll back;
+//    bool success = false;
+//    while (desirepos != empposcir)
+//    {
+//        empposcir++;
+//        // handle if exceed 7;
+//        if (empposcir == 8)
+//        {
+//            empposcir = 0;
+//        }
+//        if (validcheckcir[empposcir])
+//        {
+//            // roll back
+//            while (empposcir != empposcontainer)
+//            {
+//                empposcir--;
+//            }
+//            thefinaltrailtomoveempt.clear();
+//            break;
+//        }
+//        else
+//        {
+//            thefinaltrailtomoveempt.push_back(circleindex[empposcir]);
+//            if (desirepos == empposcir)
+//            {
+//                bool success = true;
+//            }
+//        }
+//    }
+
+//    if (!success)
+//    {
+//        while (desirepos != empposcir)
+//        {
+//            empposcir--;
+//            // handle exceed 0
+//            if (empposcir == -1)
+//            {
+//                empposcir = 7;
+//            }
+//            thefinaltrailtomoveempt.push_back(circleindex[empposcir]);
+//        }
+//    }
+
+//    int pathfinder1 = empposcir;
+
+//    while(desirepos != empposcir)
+//    {
+//        thefinaltrailtomoveempt.push_back();
+//    }
+
+//    empgotrail(thefinaltrailtomoveempt);
+
+    vector<pair<int,int>> path1;
+    bool path1aval = false;
+    vector<pair<int,int>> path2;
+    bool path2aval = false;
+
+    int empposcontainer = empposcir;
+
+    //deal with clockwise path first
+    while(empposcir != desirepos)
     {
         empposcir++;
-        // handle if exceed 7;
         if (empposcir == 8)
         {
             empposcir = 0;
         }
+
         if (validcheckcir[empposcir])
         {
-            // roll back
-            while (empposcir != empposcontainer)
-            {
-                empposcir--;
-            }
-            thefinaltrailtomoveempt.clear();
             break;
         }
         else
         {
-            thefinaltrailtomoveempt.push_back(circleindex[empposcir]);
-            if (desirepos == empposcir)
+            path1.push_back(circleindex[empposcir]);
+            if(empposcir == desirepos)
             {
-                bool success = true;
+                path1aval = true;
             }
         }
+
     }
 
-    if (!success)
+    empposcir = empposcontainer;
+
+    while(empposcir != desirepos)
     {
-        while (desirepos != empposcir)
+        empposcir--;
+        if (empposcir == -1)
         {
-            empposcir--;
-            // handle exceed 0
-            if (empposcir == -1)
+            empposcir = 7;
+        }
+
+        if(validcheckcir[empposcir])
+        {
+            break;
+        }
+        else
+        {
+            path2.push_back(circleindex[empposcir]);
+            if(empposcir == desirepos)
             {
-                empposcir = 7;
+                path2aval = true;
             }
-            thefinaltrailtomoveempt.push_back(circleindex[empposcir]);
         }
     }
 
-    empgotrail(thefinaltrailtomoveempt);
+    if(path1aval&&path2aval)
+    {
+        if(path2.size()>path1.size())
+        {
+            empgotrail(path1);
+        }
+        else
+        {
+            empgotrail(path2);
+        }
+    }
+    else if(path1aval)
+    {
+        empgotrail(path1);
+    }
+    else
+    {
+        empgotrail(path2);
+    }
+
 
     swaptoemp(center);
 

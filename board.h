@@ -20,8 +20,8 @@ signals:
     void updatesig(int);
     void solvedone();
 
-public:
 
+public:
     explicit board(int size = 4, QObject *parent = nullptr);
 
     int size;

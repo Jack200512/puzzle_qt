@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>800</height>
+    <width>1300</width>
+    <height>900</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,8 +23,8 @@
    <widget class="QPushButton" name="square7">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>270</y>
+      <x>600</x>
+      <y>280</y>
       <width>121</width>
       <height>121</height>
      </rect>
@@ -42,8 +42,8 @@
    <widget class="QPushButton" name="square8">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>270</y>
+      <x>720</x>
+      <y>280</y>
       <width>121</width>
       <height>121</height>
      </rect>
@@ -61,8 +61,8 @@
    <widget class="QPushButton" name="square4">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>150</y>
+      <x>720</x>
+      <y>160</y>
       <width>121</width>
       <height>121</height>
      </rect>
@@ -80,8 +80,8 @@
    <widget class="QPushButton" name="square10">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>390</y>
+      <x>480</x>
+      <y>400</y>
       <width>121</width>
       <height>121</height>
      </rect>
@@ -99,8 +99,8 @@
    <widget class="QPushButton" name="square3">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>150</y>
+      <x>600</x>
+      <y>160</y>
       <width>121</width>
       <height>121</height>
      </rect>
@@ -118,8 +118,8 @@
    <widget class="QPushButton" name="square9">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>390</y>
+      <x>360</x>
+      <y>400</y>
       <width>121</width>
       <height>121</height>
      </rect>
@@ -137,8 +137,8 @@
    <widget class="QPushButton" name="square2">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>150</y>
+      <x>480</x>
+      <y>160</y>
       <width>121</width>
       <height>121</height>
      </rect>
@@ -156,8 +156,8 @@
    <widget class="QPushButton" name="square1">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>150</y>
+      <x>360</x>
+      <y>160</y>
       <width>121</width>
       <height>121</height>
      </rect>
@@ -175,8 +175,8 @@
    <widget class="QPushButton" name="square5">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>270</y>
+      <x>360</x>
+      <y>280</y>
       <width>121</width>
       <height>121</height>
      </rect>
@@ -194,8 +194,8 @@
    <widget class="QPushButton" name="square6">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>270</y>
+      <x>480</x>
+      <y>280</y>
       <width>121</width>
       <height>121</height>
      </rect>
@@ -213,8 +213,8 @@
    <widget class="QPushButton" name="square14">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>510</y>
+      <x>480</x>
+      <y>520</y>
       <width>121</width>
       <height>121</height>
      </rect>
@@ -232,8 +232,8 @@
    <widget class="QPushButton" name="square13">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>510</y>
+      <x>360</x>
+      <y>520</y>
       <width>121</width>
       <height>121</height>
      </rect>
@@ -251,8 +251,8 @@
    <widget class="QPushButton" name="square12">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>390</y>
+      <x>720</x>
+      <y>400</y>
       <width>121</width>
       <height>121</height>
      </rect>
@@ -270,8 +270,8 @@
    <widget class="QPushButton" name="square11">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>390</y>
+      <x>600</x>
+      <y>400</y>
       <width>121</width>
       <height>121</height>
      </rect>
@@ -289,8 +289,8 @@
    <widget class="QPushButton" name="square15">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>510</y>
+      <x>600</x>
+      <y>520</y>
       <width>121</width>
       <height>121</height>
      </rect>
@@ -308,8 +308,8 @@
    <widget class="QPushButton" name="square16">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>510</y>
+      <x>720</x>
+      <y>520</y>
       <width>121</width>
       <height>121</height>
      </rect>
@@ -327,8 +327,8 @@
    <widget class="QLCDNumber" name="timecount">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>70</y>
+      <x>550</x>
+      <y>80</y>
       <width>121</width>
       <height>41</height>
      </rect>
@@ -360,8 +360,8 @@
    <widget class="QProgressBar" name="progressbar">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>90</y>
+      <x>370</x>
+      <y>100</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -382,8 +382,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>40</y>
+      <x>380</x>
+      <y>50</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -403,8 +403,8 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>40</y>
+      <x>550</x>
+      <y>50</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -424,8 +424,8 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>40</y>
+      <x>720</x>
+      <y>50</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -445,8 +445,8 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>60</y>
+      <x>720</x>
+      <y>70</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -463,7 +463,7 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>80</x>
       <y>40</y>
       <width>161</width>
       <height>31</height>
@@ -484,8 +484,8 @@
    <widget class="Line" name="line">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>40</y>
+      <x>310</x>
+      <y>50</y>
       <width>31</width>
       <height>571</height>
      </rect>
@@ -497,8 +497,8 @@
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>30</y>
+      <x>360</x>
+      <y>40</y>
       <width>141</width>
       <height>91</height>
      </rect>
@@ -519,8 +519,8 @@
    <widget class="QFrame" name="frame_2">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>30</y>
+      <x>530</x>
+      <y>40</y>
       <width>141</width>
       <height>91</height>
      </rect>
@@ -547,8 +547,8 @@
    <widget class="QLCDNumber" name="stepcounter">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>80</y>
+      <x>750</x>
+      <y>90</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -580,8 +580,8 @@
    <widget class="QFrame" name="frame_3">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>30</y>
+      <x>700</x>
+      <y>40</y>
       <width>141</width>
       <height>91</height>
      </rect>
@@ -602,9 +602,9 @@
    <widget class="QFrame" name="frame_4">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>90</y>
-      <width>161</width>
+      <x>70</x>
+      <y>100</y>
+      <width>181</width>
       <height>51</height>
      </rect>
     </property>
@@ -617,12 +617,12 @@
     <property name="frameShadow">
      <enum>QFrame::Plain</enum>
     </property>
-    <widget class="QLabel" name="playinguser">
+    <widget class="QLabel" name="playingusername">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>10</y>
-       <width>161</width>
+       <width>181</width>
        <height>31</height>
       </rect>
      </property>
@@ -632,7 +632,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Jack Lu</string>
+      <string>None</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -642,8 +642,8 @@
    <widget class="Line" name="line_2">
     <property name="geometry">
      <rect>
-      <x>750</x>
-      <y>40</y>
+      <x>850</x>
+      <y>50</y>
       <width>51</width>
       <height>571</height>
      </rect>
@@ -655,8 +655,8 @@
    <widget class="QPushButton" name="solveandshow">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>660</y>
+      <x>630</x>
+      <y>670</y>
       <width>141</width>
       <height>41</height>
      </rect>
@@ -668,8 +668,8 @@
    <widget class="QPushButton" name="sufflebut">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>660</y>
+      <x>430</x>
+      <y>670</y>
       <width>141</width>
       <height>41</height>
      </rect>
@@ -678,59 +678,11 @@
      <string>Suffle</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_7">
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>680</y>
-      <width>261</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>9</pointsize>
-      <weight>75</weight>
-      <italic>true</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Copyright © 2025 Jack Lu.</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_8">
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>720</y>
-      <width>261</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>9</pointsize>
-      <weight>75</weight>
-      <italic>true</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>All rights reserved.</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
    <widget class="QFrame" name="frame_5">
     <property name="geometry">
      <rect>
-      <x>720</x>
-      <y>680</y>
+      <x>470</x>
+      <y>750</y>
       <width>261</width>
       <height>81</height>
      </rect>
@@ -744,50 +696,240 @@
     <property name="frameShadow">
      <enum>QFrame::Plain</enum>
     </property>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>261</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+       <weight>75</weight>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:balck</string>
+     </property>
+     <property name="text">
+      <string>Copyright © 2025 Jack Lu.</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>30</y>
+       <width>261</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+       <weight>75</weight>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:black</string>
+     </property>
+     <property name="text">
+      <string>All rights reserved.</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QFrame" name="frame_7">
+    <property name="geometry">
+     <rect>
+      <x>900</x>
+      <y>40</y>
+      <width>371</width>
+      <height>211</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::WinPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>3</number>
+    </property>
+    <widget class="QLabel" name="label_10">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>0</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Personal</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="rankbytimerec">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>30</y>
+       <width>111</width>
+       <height>171</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="rankbysteprec">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>30</y>
+       <width>111</width>
+       <height>171</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="rankbytime">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>0</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Time Rank</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="rankbystep">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>0</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Step Rank</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="personalrec">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>111</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame_9">
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>200</y>
-      <width>141</width>
-      <height>31</height>
+      <y>560</y>
+      <width>241</width>
+      <height>161</height>
      </rect>
     </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>239</y>
-      <width>71</width>
-      <height>31</height>
-     </rect>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
     </property>
-    <property name="text">
-     <string>play</string>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
     </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>239</y>
-      <width>71</width>
-      <height>31</height>
-     </rect>
+    <property name="lineWidth">
+     <number>2</number>
     </property>
-    <property name="text">
-     <string>challe.</string>
-    </property>
+    <widget class="QPushButton" name="pushButton_4">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>100</y>
+       <width>81</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Acpt.</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_5">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>100</y>
+       <width>81</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Deny</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_14">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>201</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="text">
+      <string>None</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_13">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>0</y>
+       <width>141</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Challenge info.</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QFrame" name="frame_6">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>170</y>
-      <width>181</width>
-      <height>111</height>
+      <x>40</x>
+      <y>180</y>
+      <width>241</width>
+      <height>161</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -804,8 +946,8 @@
       <rect>
        <x>20</x>
        <y>0</y>
-       <width>41</width>
-       <height>31</height>
+       <width>131</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="text">
@@ -815,93 +957,50 @@
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
-   </widget>
-   <widget class="QFrame" name="frame_7">
-    <property name="geometry">
-     <rect>
-      <x>820</x>
-      <y>30</y>
-      <width>141</width>
-      <height>141</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::WinPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <property name="lineWidth">
-     <number>3</number>
-    </property>
-    <zorder>label_10</zorder>
-   </widget>
-   <widget class="QLabel" name="label_10">
-    <property name="geometry">
-     <rect>
-      <x>840</x>
-      <y>30</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Records</string>
-    </property>
-   </widget>
-   <widget class="QTextBrowser" name="textBrowser">
-    <property name="geometry">
-     <rect>
-      <x>830</x>
-      <y>60</y>
-      <width>121</width>
-      <height>101</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_11">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>310</y>
-      <width>111</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Sign up</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>340</y>
-      <width>141</width>
-      <height>20</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>370</y>
-      <width>81</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Confirm</string>
-    </property>
+    <widget class="QComboBox" name="usercombo">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>201</width>
+       <height>41</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="challengereq">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>100</y>
+       <width>81</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Challe.</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="playrequest">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>100</y>
+       <width>81</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Play</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QFrame" name="frame_8">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>310</y>
-      <width>181</width>
-      <height>101</height>
+      <x>40</x>
+      <y>370</y>
+      <width>241</width>
+      <height>161</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -913,100 +1012,136 @@
     <property name="lineWidth">
      <number>3</number>
     </property>
+    <widget class="QLabel" name="label_11">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>0</y>
+       <width>111</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Sign up</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="signupconfirm">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>100</y>
+       <width>121</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Confirm</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="signname">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>201</width>
+       <height>41</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
-   <widget class="QLabel" name="label_12">
+   <widget class="QFrame" name="frame_10">
     <property name="geometry">
      <rect>
-      <x>830</x>
-      <y>200</y>
-      <width>131</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Messages </string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_13">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>450</y>
-      <width>141</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Challenge info.</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_14">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>480</y>
-      <width>161</width>
-      <height>31</height>
+      <x>900</x>
+      <y>280</y>
+      <width>381</width>
+      <height>211</height>
      </rect>
     </property>
     <property name="frameShape">
-     <enum>QFrame::Box</enum>
+     <enum>QFrame::WinPanel</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
-   </widget>
-   <widget class="QFrame" name="frame_9">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>450</y>
-      <width>181</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Panel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>2</number>
-    </property>
-    <widget class="QPushButton" name="pushButton_4">
+    <widget class="QLabel" name="label_12">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>0</y>
+       <width>151</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Messages Box</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="messagebx">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>70</y>
-       <width>71</width>
-       <height>31</height>
+       <y>30</y>
+       <width>361</width>
+       <height>171</height>
       </rect>
      </property>
-     <property name="text">
-      <string>Acpt.</string>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;SELECT A PLAYER BEFORE PLAYING&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_5">
+   </widget>
+   <widget class="QFrame" name="frame_11">
+    <property name="geometry">
+     <rect>
+      <x>900</x>
+      <y>520</y>
+      <width>381</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::WinPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_6">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>70</y>
-       <width>71</width>
+       <x>20</x>
+       <y>0</y>
+       <width>161</width>
        <height>31</height>
       </rect>
      </property>
      <property name="text">
-      <string>Deny</string>
+      <string>Challenge Record</string>
      </property>
     </widget>
-    <zorder>label_13</zorder>
-    <zorder>line</zorder>
-    <zorder>pushButton_4</zorder>
-    <zorder>pushButton_5</zorder>
+    <widget class="QTextBrowser" name="textBrowser_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>361</width>
+       <height>161</height>
+      </rect>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;vs. Mary == Win&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;vs. Tony == Denied.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;vs. Antonio == Deny &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -1014,7 +1149,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1000</width>
+     <width>1300</width>
      <height>17</height>
     </rect>
    </property>

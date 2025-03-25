@@ -11,6 +11,7 @@
 #include <vector>
 #include <queue>
 #include "QTimer"
+#include "player.h"
 
 
 namespace Ui {
@@ -40,13 +41,22 @@ public:
     bool clickqueue_optimized = false;
 
 
+    player * playingplr;
+
+    vector<player*> playercreated;
+
+    vector<pair<int,int>> playingplrscorepairvec;
+
+    vector<pair<player*,int>> userhighestscoretime;
+
+    vector<pair<player*,int>> userhighestscorestep;
+
 private:
     Ui::fifpuzzle *ui;
 
 //    QVector<QPushButton*> qpbgroup;
 
     QButtonGroup * qbgptr = new QButtonGroup(this);
-
 
 
     void setupscreenwithboard(board&);
@@ -70,6 +80,46 @@ private:
 
     void dealwithclickqueue();
 
+    void updateperrec();
+    void updaterabtirec();
+    void updaterabstprec();
+
+    void updatemsgbx();
+
+    void updatechlngerec();
+
+    void updatechlngeinfo();
+
+    void formeruserliserecover();
+
+    void updateusercombo();
+
+    void playerselected(int);
+
+
+    void updateuserlistbeforecolse();
+
+    void getthescoreofgame();
+
+    void readfromthescorelist();
+
+    void noplayernogame();
+
+    void takeinandupdate_pairvec(pair<int,int>);
+
+    void savescoretotxt();
+
+    void updatehightimevec();
+
+    void takeinandupdate_secondver();
+
+    void updatescorerank_playing_time();
+
+    void updatescorerank_playing_step();
+
+
+
+
 
 public slots:
     void addtoclickqueue(int);
@@ -78,6 +128,9 @@ public slots:
     void suffleinwindow();
     void updatesolvetime();
     void startcountingtime();
+    void signupuser();
+
+    void playrequest_usersection();
 };
 
 #endif // FIFPUZZLE_H
