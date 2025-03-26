@@ -71,6 +71,8 @@ player::player(QString nameinput,QObject *parent):QObject(parent)
 
     //end of the file operations.
 
+    dialogptr = nullptr;
+
 }
 
 void player::updatehighestscore(int time, int step)

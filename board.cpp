@@ -799,8 +799,9 @@ void board::circlemethod(int num)
 
         bool specialcase = (targetpos.first == special.first && targetpos.second == special.second);
         bool empisready = (emp_squ_pos.first == 3 && emp_squ_pos.second == 0);
+        bool empisready2 = (emp_squ_pos.first == 3 && emp_squ_pos.second == 1);
 
-        if (specialcase && empisready)
+        if (specialcase && empisready&&num==4||specialcase&&empisready2&&num==8)
         {
             swaptoemp(targetpos);
             return;
@@ -1331,7 +1332,21 @@ void board::solveten()
     int num = 10;
     // get ten s pos in chart
     pair<int, int> targetpos = searchbyvalue(num, chart);
-    writebypair(searchbyvalue(num, rightposrecord), 0, moveablecheck);
+
+    pair<int,int> rightpos = searchbyvalue(num ,rightposrecord);
+
+    if(targetpos == rightpos)
+    {
+        pair<int, int> pos(0, 3);
+        vector<pair<int, int>> pafemp = findpath_yfirst(emp_squ_pos, pos);
+        empgotrail(pafemp);
+
+        writebypair(searchbyvalue(num, rightposrecord), 0, moveablecheck);
+        return;
+    }
+
+
+
 
     // first case;
     pair<int, int> empspe(0, 3);
@@ -1341,21 +1356,34 @@ void board::solveten()
     pair<int, int> empspe2(1, 2);
     pair<int, int> tenspe2(0, 3);
 
+
+
+//    bool empspecial2 = (emp_squ_pos == empspe2);
+//    bool tenspecial2 = (targetpos == tenspe2);
+//    bool case2 = empspecial2 && tenspecial2;
+
+//    if (case2)
+//    {
+//        // converting case2 to case1.
+//        vector<pair<int, int>> emppa = findpath_yfirst(emp_squ_pos, tenspe2);
+//        empgotrail(emppa);
+//        case1 = true;
+//    }
+
+    if(targetpos==tenspe2)
+    {
+        pair<int, int> pos(0, 3);
+        vector<pair<int, int>> pafemp = findpath_yfirst(emp_squ_pos, pos);
+        empgotrail(pafemp);
+
+        targetpos = searchbyvalue(num, chart);
+    }
+
+//     writebypair(searchbyvalue(num, rightposrecord), 0, moveablecheck);
+
     bool empspecial = (emp_squ_pos == empspe);
     bool tenspecial = (targetpos == tenspe);
     bool case1 = empspecial && tenspecial;
-
-    bool empspecial2 = (emp_squ_pos == empspe2);
-    bool tenspecial2 = (targetpos == tenspe2);
-    bool case2 = empspecial2 && tenspecial2;
-
-    if (case2)
-    {
-        // converting case2 to case1.
-        vector<pair<int, int>> emppa = findpath_yfirst(emp_squ_pos, tenspe2);
-        empgotrail(emppa);
-        case1 = true;
-    }
 
     if (case1)
     {
@@ -1401,6 +1429,18 @@ void board::solveeleven()
     int num = 11;
     // get eleven s pos in chart
     pair<int, int> targetpos = searchbyvalue(num, chart);
+    pair<int,int> rightpos = searchbyvalue(num ,rightposrecord);
+
+    if(targetpos == rightpos)
+    {
+        pair<int, int> pos(0, 3);
+        vector<pair<int, int>> pafemp = findpath_yfirst(emp_squ_pos, pos);
+        empgotrail(pafemp);
+
+        writebypair(searchbyvalue(num, rightposrecord), 0, moveablecheck);
+        return;
+    }
+
     writebypair(searchbyvalue(num, rightposrecord), 0, moveablecheck);
 
     pair<int, int> special1(1, 3);
@@ -1466,6 +1506,13 @@ void board::solvetwelve()
     int num = 12;
     // get eleven s pos in chart
     pair<int, int> targetpos = searchbyvalue(num, chart);
+    pair<int,int> rightpos = searchbyvalue(num ,rightposrecord);
+
+    if(targetpos == rightpos)
+    {
+        writebypair(searchbyvalue(num, rightposrecord), 0, moveablecheck);
+        return;
+    }
     writebypair(searchbyvalue(num, rightposrecord), 0, moveablecheck);
 
     bool spcase1 = (targetpos == specail1);
@@ -1593,11 +1640,12 @@ void board::solverest()
         vector<pair<int, int>> step3vec = pathgeneratorbypoint_xversion(xforgene);
         empgotrail(step3vec);
 
-        emit solvedone();
+
 
         //cout << "the problem is finally solved!" << endl;
         //cout << "total steps for computer: " << totalstep << "." << endl;
     }
+    emit solvedone();
 }
 
 

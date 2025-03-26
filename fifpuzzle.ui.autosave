@@ -882,7 +882,7 @@ p, li { white-space: pre-wrap; }
     <property name="lineWidth">
      <number>2</number>
     </property>
-    <widget class="QPushButton" name="pushButton_4">
+    <widget class="QPushButton" name="challen_ac_but">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -895,7 +895,7 @@ p, li { white-space: pre-wrap; }
       <string>Acpt.</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_5">
+    <widget class="QPushButton" name="challen_dn_but">
      <property name="geometry">
       <rect>
        <x>130</x>
@@ -1201,7 +1201,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>1300</width>
-     <height>18</height>
+     <height>17</height>
     </rect>
    </property>
   </widget>

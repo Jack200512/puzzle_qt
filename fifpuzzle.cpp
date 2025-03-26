@@ -69,6 +69,11 @@ fifpuzzle::fifpuzzle(QWidget *parent) :
 
     connect(ui->signupconfirm , &QPushButton::clicked,this,&fifpuzzle::signupuser);
 
+    connect(ui->challengereq,&QPushButton::clicked,this,&fifpuzzle::challenge_button_click);
+
+    connect(ui->challen_ac_but,&QPushButton::clicked,this,&fifpuzzle::challen_ac);
+    connect(ui->challen_dn_but,&QPushButton::clicked,this,&fifpuzzle::challen_dn);
+
     noplayernogame();
 }
 
@@ -276,7 +281,7 @@ void fifpuzzle::startupdatingui()
     clickqueue.pop();
 
 //    qDebug() << "Setting singleShot timer";
-    QTimer::singleShot(500, [=]()
+    QTimer::singleShot(300, [=]()
     {
 //        qDebug() << "Executing button click for id:" << idforupdate;
         movefunv2(idforupdate);
@@ -289,7 +294,7 @@ void fifpuzzle::startupdatingui()
     {
         solvetime->stop();
 
-        QTimer::singleShot(3000, this, [=]() {
+        QTimer::singleShot(2000, this, [=]() {
             ui->sufflebut->setEnabled(true);
             ui->solveandshow->setEnabled(true);
             foreach (QAbstractButton *button, qbgptr->buttons())
@@ -448,6 +453,11 @@ void fifpuzzle::dealwithclickqueue()
         //start checking the repeated part
 
         //updating the inspectvector
+        if(posrecord.empty())
+        {
+            posrecord.clear();
+            continue;
+        }
         for(int collect = 0;collect<posrecord.size()-1;collect++)
         {
             int frontindex = posrecord[collect];
@@ -908,6 +918,46 @@ void fifpuzzle::updatescorerank_playing_step()
         userhighestscorestep[index].second = newscore;
     }
 }
+
+
+
+
+void fifpuzzle::challenge_button_click()
+{
+    int plrindex = ui->usercombo->currentIndex();
+    player * plp = playercreated[plrindex];
+
+    if(plp == playingplr)
+    {
+        return;
+    }
+    //get the challenged player ptr;
+
+    //get the currentboard chart;
+    vector<vector<int>> currentchart = currentboard.chart;
+
+
+    challenge_dialog * challedia = new challenge_dialog(playingplr,plp,currentchart);
+
+    chadialogsum.push_back(challedia);
+
+    playingplr->dialogptr = challedia;
+    plp->dialogptr = challedia;
+
+    playingplr->inthebattle = true;
+    plp->challenger = playingplr;
+
+}
+
+//void fifpuzzle::challen_ac()
+//{
+//    if(playingplr->dialogptr == nullptr)
+//    {
+//        return;
+//    }
+
+//    playingplr->
+//}
 
 
 fifpuzzle::~fifpuzzle()

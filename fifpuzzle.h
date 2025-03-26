@@ -51,6 +51,9 @@ public:
 
     vector<pair<player*,int>> userhighestscorestep;
 
+
+    vector<challenge_dialog * > chadialogsum;
+
 private:
     Ui::fifpuzzle *ui;
 
@@ -131,6 +134,10 @@ public slots:
     void signupuser();
 
     void playrequest_usersection();
+
+    void challenge_button_click();
+    void challen_ac();
+    void challen_dn();
 };
 
 #endif // FIFPUZZLE_H
