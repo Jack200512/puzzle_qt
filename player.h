@@ -7,9 +7,11 @@
 #include <QDir>
 #include <QFile>
 #include <QTextStream>
-#include "challenge_dialog.h"
+//#include "challenge_dialog.h"
 
 using namespace std;
+
+class challenge_dialog;
 
 class player : public QObject
 {
@@ -32,6 +34,8 @@ public:
     player * challenger;
 
     challenge_dialog * dialogptr;
+
+    vector<QString> challenge_msg;
 
 
     int challenge_result = 0;

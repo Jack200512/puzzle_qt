@@ -53,6 +53,8 @@ public:
 
     bool solveandshowclicked = false;
 
+
+
 public:
     int dealinglinenum = -1;
 

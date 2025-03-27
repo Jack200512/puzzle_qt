@@ -2,6 +2,7 @@
 #include "ui_fifpuzzle.h"
 #include <QDebug>
 #include "player.h"
+#include "challenge_dialog.h"
 
 fifpuzzle::fifpuzzle(QWidget *parent) :
     QMainWindow(parent),
@@ -74,6 +75,10 @@ fifpuzzle::fifpuzzle(QWidget *parent) :
     connect(ui->challen_ac_but,&QPushButton::clicked,this,&fifpuzzle::challen_ac);
     connect(ui->challen_dn_but,&QPushButton::clicked,this,&fifpuzzle::challen_dn);
 
+    connect(ui->hintbutton,&QPushButton::clicked,this,&fifpuzzle::hint);
+
+
+
     noplayernogame();
 }
 
@@ -115,10 +120,11 @@ pair<int,int> fifpuzzle::indextopair(int index)
 void fifpuzzle::movefun(int id,board& currentboar)
 {
 
+
     if(!userplaying)
     {
         ui->playrequest->setEnabled(false);
-        ui->challengereq->setEnabled(false);
+//        ui->challengereq->setEnabled(false);
         ui->signupconfirm->setEnabled(false);
         startcountingtime();
         userplaying = true;
@@ -235,8 +241,6 @@ void fifpuzzle::solveandshow()
 
     }
 
-//    qDebug() << "Button is enabled:" << ui->solveandshow->isEnabled();
-//    qDebug() << "Button is enabled:" << ui->sufflebut->isEnabled();
 
     timeinsecond = 0;//every entry to this function causes the clearance of the timeinsecond.
     stepcount = 0;
@@ -244,7 +248,7 @@ void fifpuzzle::solveandshow()
     currentboard.solveandshowclicked = true;
     for (int i = 1; i <= 9; i++)
     {
-//        qDebug()<<"resolving"<<i;
+
         currentboard.circlemethod(i);
     }
     currentboard.solveten();
@@ -369,7 +373,7 @@ void fifpuzzle::updatetheprogressbar(vector<vector<int>>&accordchart)
 
     ui->progressbar->setValue(5*result);
 
-    if(result==20)
+    if(result==20)//user solved.
     {
         if(userplaying)
         {
@@ -381,10 +385,25 @@ void fifpuzzle::updatetheprogressbar(vector<vector<int>>&accordchart)
             updaterabtirec();
             updaterabstprec();
 
+            if(playingplr->inthebattle)
+            {
+                //if now playing plr is the challenger,update the challenger record in the dialog;
+                if(playingplr == playingplr->dialogptr->challenger)
+                {
+                    playingplr->dialogptr->challenger_time = ui->timecount->value();
+                }
+                else
+                {
+                    playingplr->dialogptr->bechallenged_time = ui->timecount->value();
+                    emit bechallenged_done();
+                }
+            }
+
             ui->playrequest->setEnabled(true);
             ui->challengereq->setEnabled(true);
             ui->signupconfirm->setEnabled(true);
         }
+
         updateperrec();
         userplaying = false;//no matter the road it takes to reach the terminal , shift in state;
         solvetime->stop();
@@ -689,16 +708,30 @@ void fifpuzzle::playerselected(int index)
 {
     ui->personalrec->clear();
     savescoretotxt();
+    savetochallentxt();
     playingplr = playercreated[index];
 
     readfromthescorelist();
 
     ui->playingusername->setText(playingplr->username);
 
+    if(playingplr->challenger != nullptr)
+    {
+        QString namedis = playingplr->challenger->username;
+        ui->challenger_name->setText(namedis);
+    }
+    else
+    {
+        ui->challenger_name->setText("None");
+    }
+
 
     //to be finish ,update the message box and other stuff.
 
     updateperrec();
+
+    readfromchallentxt();
+    showthebat_res_playing();
 
 
 }
@@ -924,6 +957,11 @@ void fifpuzzle::updatescorerank_playing_step()
 
 void fifpuzzle::challenge_button_click()
 {
+    if(playingplr->dialogptr != nullptr)
+    {
+        return;
+    }
+
     int plrindex = ui->usercombo->currentIndex();
     player * plp = playercreated[plrindex];
 
@@ -931,6 +969,7 @@ void fifpuzzle::challenge_button_click()
     {
         return;
     }
+
     //get the challenged player ptr;
 
     //get the currentboard chart;
@@ -947,18 +986,127 @@ void fifpuzzle::challenge_button_click()
     playingplr->inthebattle = true;
     plp->challenger = playingplr;
 
+    connect(this,&fifpuzzle::bechallenged_done,&*(playingplr->dialogptr),&challenge_dialog::calculation);
+    connect(&*(playingplr->dialogptr),&challenge_dialog::battleover,this,&fifpuzzle::showthebat_res_playing);
 }
 
-//void fifpuzzle::challen_ac()
-//{
-//    if(playingplr->dialogptr == nullptr)
-//    {
-//        return;
-//    }
+void fifpuzzle::challen_ac()
+{
+    qDebug()<<"challen accepted";
+    if(playingplr->dialogptr == nullptr)
+    {
+        return;
+    }
 
-//    playingplr->
-//}
+    //only bechallenged plr can accept the challenge.
+    bool bechallenger_ac = playingplr->dialogptr->challengedplr == playingplr;
 
+    if(bechallenger_ac)
+    {
+        playingplr->inthebattle = true;
+        currentboard.chart = playingplr->dialogptr->theproblem_on;
+        currentboard.emp_squ_pos = currentboard.searchbyvalue(0,currentboard.chart);
+
+        setupscreenwithboard(currentboard);
+
+        ui->challenger_name->setText("None");
+
+    }
+}
+
+
+void fifpuzzle::showthebat_res_playing()
+{
+    //if in the state of battle, then enter the judgement phase;
+    if(playingplr->dialogptr != nullptr)
+    {
+        if(playingplr->dialogptr->state != -1)
+        {
+            playingplr->dialogptr->challenger->dialogptr = nullptr;//release the dialogptr
+            delete playingplr->dialogptr;
+            playingplr -> dialogptr = nullptr;
+        }
+    }
+
+
+    ui->challen_rec->clear();
+    for(int i= 0;i<playingplr->challenge_msg.size();i++)
+    {
+        ui->challen_rec->append(playingplr->challenge_msg[i]);
+    }
+}
+
+void fifpuzzle::challen_dn()
+{
+    QString textforchallenger = "vs." + playingplr->dialogptr->challengedplr->username + " == " +"Denied";
+    QString textforbechallenged = "vs." + playingplr->dialogptr->challenger->username + " == " + "Deny";
+
+    playingplr->challenge_msg.push_back(textforbechallenged);
+    playingplr->dialogptr->challenger->challenge_msg.push_back(textforchallenger);
+
+    playingplr->dialogptr->state = 2;
+    showthebat_res_playing();
+}
+
+void fifpuzzle::readfromchallentxt()
+{
+    QString path = playingplr->challerecordpath;
+    QFile file(path);
+
+    if(!file.open(QIODevice::ReadOnly|QIODevice::Text))
+    {
+        qDebug()<<"wrong";
+        return;
+    }
+
+    if(file.size() == 0)
+    {
+        file.close();
+        return;
+    }
+
+    QTextStream in(&file);
+
+   playingplr->challenge_msg.clear();
+    while(!in.atEnd())
+    {
+        QString singleline = in.readLine();
+        playingplr->challenge_msg.push_back(singleline);
+    }
+
+    file.close();
+}
+
+void fifpuzzle::savetochallentxt()
+{
+    if(playingplr==nullptr)
+    {
+        return;
+    }
+    QString path = playingplr->challerecordpath;
+    QFile file(path);
+
+    if(!file.open(QIODevice::WriteOnly|QIODevice::Truncate))
+    {
+        qDebug()<<"wrong";
+        return;
+    }
+
+    QTextStream out(&file);
+
+    for(int i = 0;i<playingplr->challenge_msg.size();i++)
+    {
+        out << playingplr->challenge_msg[i]+"\n";
+    }
+    file.close();
+}
+
+void fifpuzzle::hint()
+{
+
+    return;
+
+}
 
 fifpuzzle::~fifpuzzle()
 {

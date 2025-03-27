@@ -13,6 +13,8 @@
 #include "QTimer"
 #include "player.h"
 
+class player;
+class challenge_dialog;
 
 namespace Ui {
 class fifpuzzle;
@@ -78,6 +80,7 @@ private:
     vector<int> settedsquare;
     vector<int> settedline;
 
+
     void updatetheprogressbar(vector<vector<int>>&);
     void updatethestep();
 
@@ -121,6 +124,10 @@ private:
     void updatescorerank_playing_step();
 
 
+    void readfromchallentxt();
+    void savetochallentxt();
+
+
 
 
 
@@ -138,6 +145,14 @@ public slots:
     void challenge_button_click();
     void challen_ac();
     void challen_dn();
+
+    void showthebat_res_playing();
+
+    void hint();
+
+signals:
+    void bechallenged_done();
+
 };
 
 #endif // FIFPUZZLE_H

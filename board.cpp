@@ -169,6 +169,11 @@ void board::swaptoemp(pair<int, int> forswap)
         int id = forswap.second*4 + forswap.first;
         emit updatesig(id);
     }
+
+//    if(hinter == -1)
+//    {
+//        hinter = forswap.second*4 + forswap.first;
+//    }
 }
 
 void board::movesquare(int direction)
@@ -1592,6 +1597,7 @@ void board::solvetwelve()
 
 void board::solverest()
 {
+
     pair<int, int> inspect(emp_squ_pos.first + 1, emp_squ_pos.second);
     int value = getvaluebypair(inspect, chart);
     if (value == 13)

@@ -1,4 +1,5 @@
 #include "player.h"
+#include "challenge_dialog.h"
 #include <QCoreApplication>
 #include <QDebug>
 
@@ -73,12 +74,14 @@ player::player(QString nameinput,QObject *parent):QObject(parent)
 
     dialogptr = nullptr;
 
+    challenger = nullptr;
+
 }
 
-void player::updatehighestscore(int time, int step)
-{
-    shortesttime = time;
-    shorteststep = step;
-}
+//void player::updatehighestscore(int time, int step)
+//{
+//    shortesttime = time;
+//    shorteststep = step;
+//}
 
 

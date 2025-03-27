@@ -2,32 +2,44 @@
 #define CHALLENGE_DIALOG_H
 
 #include <QObject>
-#include <player.h>
+
 #include "board.h"
 #include <vector>
+#include <QString>
+
+class player;
 
 class challenge_dialog : public QObject
 {
     Q_OBJECT
+
+ public:
     player * challenger;
     player * challengedplr;
 
     int challenger_time;
-    int challenger_step;
+//    int challenger_step;
 
     int bechallenged_time;
-    int bechallenged_step;
+//    int bechallenged_step;
 
-//    int state = 0;
-//    //0 waiting , 1 ongoing ,
+    int state = -1;
+    //0 for challenger lose,1 for challenger win ,2 for bechanllenged denied,3 for draw;
+
+    QString textforchallenger;
+    QString textforbechallenged;
 
     vector<vector<int>> theproblem_on;
 
 public:
     challenge_dialog(player*,player*,vector<vector<int>>&,QObject * parent = nullptr);
 
+public slots:
+    void calculation();
+
+
 signals:
-    void battleover(player *);
+    void battleover();
 };
 
 #endif // CHALLENGE_DIALOG_H
