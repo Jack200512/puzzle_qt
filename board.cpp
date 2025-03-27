@@ -170,10 +170,6 @@ void board::swaptoemp(pair<int, int> forswap)
         emit updatesig(id);
     }
 
-//    if(hinter == -1)
-//    {
-//        hinter = forswap.second*4 + forswap.first;
-//    }
 }
 
 void board::movesquare(int direction)
@@ -652,13 +648,6 @@ void board::circletransportforemp(pair<int, int> center, pair<int, int> desire) 
 //            }
 //            thefinaltrailtomoveempt.push_back(circleindex[empposcir]);
 //        }
-//    }
-
-//    int pathfinder1 = empposcir;
-
-//    while(desirepos != empposcir)
-//    {
-//        thefinaltrailtomoveempt.push_back();
 //    }
 
 //    empgotrail(thefinaltrailtomoveempt);

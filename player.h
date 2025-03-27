@@ -37,6 +37,8 @@ public:
 
     vector<QString> challenge_msg;
 
+    vector<QString> messages_boxvec;
+
 
     int challenge_result = 0;
 

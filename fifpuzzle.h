@@ -54,7 +54,16 @@ public:
     vector<pair<player*,int>> userhighestscorestep;
 
 
+
     vector<challenge_dialog * > chadialogsum;
+
+    bool hintmode = false;
+    int hinter = -1;
+
+    bool hintclicked =false;
+
+    bool userinterfer =false;
+
 
 private:
     Ui::fifpuzzle *ui;
@@ -127,8 +136,13 @@ private:
     void readfromchallentxt();
     void savetochallentxt();
 
+    void minisolveandshow();
 
+    void startplaying_button();
 
+    void asetfinished();
+
+    void gamedone_nosolve_hint();
 
 
 public slots:
@@ -149,6 +163,8 @@ public slots:
     void showthebat_res_playing();
 
     void hint();
+
+    void userinterferen();
 
 signals:
     void bechallenged_done();

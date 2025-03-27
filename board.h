@@ -64,6 +64,8 @@ public:
 
     vector<vector<int>> chartphoto;
 
+
+
 //    board();
 
 //    board(int size);

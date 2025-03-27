@@ -171,6 +171,8 @@
      <font>
       <family>Arial Rounded MT Bold</family>
       <pointsize>25</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="text">
@@ -329,124 +331,6 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLCDNumber" name="timecount">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>80</y>
-      <width>121</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Bodoni MT</family>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">coler:red</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="smallDecimalPoint">
-     <bool>false</bool>
-    </property>
-    <property name="mode">
-     <enum>QLCDNumber::Dec</enum>
-    </property>
-    <property name="segmentStyle">
-     <enum>QLCDNumber::Flat</enum>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="progressbar">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>100</y>
-      <width>121</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="value">
-     <number>24</number>
-    </property>
-    <property name="textVisible">
-     <bool>false</bool>
-    </property>
-    <property name="invertedAppearance">
-     <bool>false</bool>
-    </property>
-    <property name="textDirection">
-     <enum>QProgressBar::TopToBottom</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>50</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>9</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color:green</string>
-    </property>
-    <property name="text">
-     <string>Progress</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>50</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>9</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color:red</string>
-    </property>
-    <property name="text">
-     <string>Time</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>50</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>9</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color:blue</string>
-    </property>
-    <property name="text">
-     <string>Step</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
@@ -465,27 +349,6 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>40</y>
-      <width>161</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>9</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Playin' as</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
    <widget class="Line" name="line">
     <property name="geometry">
      <rect>
@@ -494,6 +357,12 @@
       <width>31</width>
       <height>681</height>
      </rect>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="lineWidth">
+     <number>2</number>
     </property>
     <property name="orientation">
      <enum>Qt::Vertical</enum>
@@ -512,7 +381,7 @@
      <string notr="true">color:green</string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::WinPanel</enum>
+     <enum>QFrame::Panel</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Plain</enum>
@@ -520,6 +389,52 @@
     <property name="lineWidth">
      <number>3</number>
     </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Cascadia Code SemiBold</family>
+       <pointsize>9</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:green</string>
+     </property>
+     <property name="text">
+      <string>Progress</string>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="progressbar">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>121</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="value">
+      <number>24</number>
+     </property>
+     <property name="textVisible">
+      <bool>false</bool>
+     </property>
+     <property name="invertedAppearance">
+      <bool>false</bool>
+     </property>
+     <property name="textDirection">
+      <enum>QProgressBar::TopToBottom</enum>
+     </property>
+    </widget>
    </widget>
    <widget class="QFrame" name="frame_2">
     <property name="geometry">
@@ -540,7 +455,7 @@
      <string notr="true">color:red;</string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::WinPanel</enum>
+     <enum>QFrame::Panel</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Plain</enum>
@@ -548,39 +463,63 @@
     <property name="lineWidth">
      <number>3</number>
     </property>
-   </widget>
-   <widget class="QLCDNumber" name="stepcounter">
-    <property name="geometry">
-     <rect>
-      <x>750</x>
-      <y>90</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Bodoni MT</family>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">coler:blue</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="smallDecimalPoint">
-     <bool>false</bool>
-    </property>
-    <property name="mode">
-     <enum>QLCDNumber::Dec</enum>
-    </property>
-    <property name="segmentStyle">
-     <enum>QLCDNumber::Flat</enum>
-    </property>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Cascadia Code SemiBold</family>
+       <pointsize>9</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:red</string>
+     </property>
+     <property name="text">
+      <string>Time</string>
+     </property>
+    </widget>
+    <widget class="QLCDNumber" name="timecount">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>121</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bodoni MT</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">coler:red</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="smallDecimalPoint">
+      <bool>false</bool>
+     </property>
+     <property name="mode">
+      <enum>QLCDNumber::Dec</enum>
+     </property>
+     <property name="segmentStyle">
+      <enum>QLCDNumber::Flat</enum>
+     </property>
+    </widget>
    </widget>
    <widget class="QFrame" name="frame_3">
     <property name="geometry">
@@ -595,7 +534,7 @@
      <string notr="true">color:blue</string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::WinPanel</enum>
+     <enum>QFrame::Panel</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Plain</enum>
@@ -603,44 +542,61 @@
     <property name="lineWidth">
      <number>3</number>
     </property>
-   </widget>
-   <widget class="QFrame" name="frame_4">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>80</y>
-      <width>181</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color:brown</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::WinPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <widget class="QLabel" name="playingusername">
+    <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
-       <x>0</x>
+       <x>20</x>
        <y>10</y>
-       <width>181</width>
+       <width>121</width>
        <height>31</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <family>Cascadia Code SemiBold</family>
+       <pointsize>9</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
       </font>
      </property>
-     <property name="text">
-      <string>None</string>
+     <property name="styleSheet">
+      <string notr="true">color:blue</string>
      </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
+     <property name="text">
+      <string>Step</string>
+     </property>
+    </widget>
+    <widget class="QLCDNumber" name="stepcounter">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>50</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bodoni MT</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">coler:blue</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="smallDecimalPoint">
+      <bool>false</bool>
+     </property>
+     <property name="mode">
+      <enum>QLCDNumber::Dec</enum>
+     </property>
+     <property name="segmentStyle">
+      <enum>QLCDNumber::Flat</enum>
      </property>
     </widget>
    </widget>
@@ -652,6 +608,12 @@
       <width>51</width>
       <height>681</height>
      </rect>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="lineWidth">
+     <number>2</number>
     </property>
     <property name="orientation">
      <enum>Qt::Vertical</enum>
@@ -668,6 +630,7 @@
     </property>
     <property name="font">
      <font>
+      <family>Consolas</family>
       <pointsize>10</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -688,6 +651,7 @@
     </property>
     <property name="font">
      <font>
+      <family>Consolas</family>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -699,9 +663,9 @@
    <widget class="QFrame" name="frame_5">
     <property name="geometry">
      <rect>
-      <x>900</x>
-      <y>760</y>
-      <width>281</width>
+      <x>1000</x>
+      <y>770</y>
+      <width>261</width>
       <height>81</height>
      </rect>
     </property>
@@ -719,15 +683,16 @@
       <rect>
        <x>10</x>
        <y>0</y>
-       <width>261</width>
+       <width>241</width>
        <height>51</height>
       </rect>
      </property>
      <property name="font">
       <font>
+       <family>Arial</family>
        <pointsize>9</pointsize>
        <weight>75</weight>
-       <italic>true</italic>
+       <italic>false</italic>
        <bold>true</bold>
       </font>
      </property>
@@ -746,15 +711,16 @@
       <rect>
        <x>10</x>
        <y>30</y>
-       <width>261</width>
+       <width>241</width>
        <height>51</height>
       </rect>
      </property>
      <property name="font">
       <font>
+       <family>Arial</family>
        <pointsize>9</pointsize>
        <weight>75</weight>
-       <italic>true</italic>
+       <italic>false</italic>
        <bold>true</bold>
       </font>
      </property>
@@ -775,17 +741,17 @@
       <x>900</x>
       <y>40</y>
       <width>371</width>
-      <height>211</height>
+      <height>221</height>
      </rect>
     </property>
     <property name="frameShape">
-     <enum>QFrame::WinPanel</enum>
+     <enum>QFrame::Panel</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
     <property name="lineWidth">
-     <number>3</number>
+     <number>5</number>
     </property>
     <widget class="QLabel" name="label_10">
      <property name="geometry">
@@ -793,8 +759,14 @@
        <x>10</x>
        <y>0</y>
        <width>101</width>
-       <height>31</height>
+       <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
       <string>Personal</string>
@@ -804,20 +776,30 @@
      <property name="geometry">
       <rect>
        <x>130</x>
-       <y>30</y>
+       <y>40</y>
        <width>111</width>
        <height>171</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial Rounded MT Bold</family>
+      </font>
      </property>
     </widget>
     <widget class="QTextBrowser" name="rankbysteprec">
      <property name="geometry">
       <rect>
        <x>250</x>
-       <y>30</y>
+       <y>40</y>
        <width>111</width>
        <height>171</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial Rounded MT Bold</family>
+      </font>
      </property>
     </widget>
     <widget class="QLabel" name="rankbytime">
@@ -826,8 +808,14 @@
        <x>130</x>
        <y>0</y>
        <width>101</width>
-       <height>31</height>
+       <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
       <string>Time Rank</string>
@@ -839,8 +827,14 @@
        <x>250</x>
        <y>0</y>
        <width>101</width>
-       <height>31</height>
+       <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
       <string>Step Rank</string>
@@ -850,17 +844,23 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>30</y>
+       <y>40</y>
        <width>111</width>
        <height>171</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Consolas</family>
+       <pointsize>9</pointsize>
+      </font>
      </property>
      <property name="html">
       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Consolas'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun';&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </widget>
@@ -877,10 +877,10 @@ p, li { white-space: pre-wrap; }
      <enum>QFrame::Panel</enum>
     </property>
     <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
+     <enum>QFrame::Sunken</enum>
     </property>
     <property name="lineWidth">
-     <number>2</number>
+     <number>5</number>
     </property>
     <widget class="QPushButton" name="challen_ac_but">
      <property name="geometry">
@@ -890,6 +890,11 @@ p, li { white-space: pre-wrap; }
        <width>81</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Consolas</family>
+      </font>
      </property>
      <property name="text">
       <string>Acpt.</string>
@@ -904,6 +909,11 @@ p, li { white-space: pre-wrap; }
        <height>41</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Consolas</family>
+      </font>
+     </property>
      <property name="text">
       <string>Deny</string>
      </property>
@@ -916,6 +926,11 @@ p, li { white-space: pre-wrap; }
        <width>201</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial Rounded MT Bold</family>
+      </font>
      </property>
      <property name="frameShape">
       <enum>QFrame::Box</enum>
@@ -932,9 +947,15 @@ p, li { white-space: pre-wrap; }
       <rect>
        <x>20</x>
        <y>0</y>
-       <width>141</width>
+       <width>211</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
       <string>Challenge info.</string>
@@ -951,13 +972,13 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
     <property name="frameShape">
-     <enum>QFrame::WinPanel</enum>
+     <enum>QFrame::Panel</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Sunken</enum>
     </property>
     <property name="lineWidth">
-     <number>3</number>
+     <number>5</number>
     </property>
     <widget class="QLabel" name="label_9">
      <property name="geometry">
@@ -967,6 +988,12 @@ p, li { white-space: pre-wrap; }
        <width>131</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
       <string>User</string>
@@ -994,8 +1021,13 @@ p, li { white-space: pre-wrap; }
        <height>41</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Consolas</family>
+      </font>
+     </property>
      <property name="text">
-      <string>Challe.</string>
+      <string>Chllgn.</string>
      </property>
     </widget>
     <widget class="QPushButton" name="playrequest">
@@ -1006,6 +1038,11 @@ p, li { white-space: pre-wrap; }
        <width>91</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Consolas</family>
+      </font>
      </property>
      <property name="text">
       <string>Play</string>
@@ -1022,13 +1059,13 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
     <property name="frameShape">
-     <enum>QFrame::WinPanel</enum>
+     <enum>QFrame::Panel</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Sunken</enum>
     </property>
     <property name="lineWidth">
-     <number>3</number>
+     <number>5</number>
     </property>
     <widget class="QLabel" name="label_11">
      <property name="geometry">
@@ -1038,6 +1075,12 @@ p, li { white-space: pre-wrap; }
        <width>111</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
       <string>Sign up</string>
@@ -1051,6 +1094,11 @@ p, li { white-space: pre-wrap; }
        <width>121</width>
        <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Impact</family>
+      </font>
      </property>
      <property name="text">
       <string>Confirm</string>
@@ -1072,24 +1120,33 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>900</x>
       <y>280</y>
-      <width>381</width>
+      <width>371</width>
       <height>211</height>
      </rect>
     </property>
     <property name="frameShape">
-     <enum>QFrame::WinPanel</enum>
+     <enum>QFrame::Panel</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>5</number>
     </property>
     <widget class="QLabel" name="label_12">
      <property name="geometry">
       <rect>
        <x>20</x>
        <y>0</y>
-       <width>151</width>
-       <height>31</height>
+       <width>261</width>
+       <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
       <string>Messages Box</string>
@@ -1099,17 +1156,23 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>30</y>
-       <width>361</width>
-       <height>171</height>
+       <y>40</y>
+       <width>351</width>
+       <height>161</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>9</pointsize>
+      </font>
      </property>
      <property name="html">
       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;SELECT A PLAYER BEFORE PLAYING&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun';&quot;&gt;SELECT A PLAYER BEFORE PLAYING&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </widget>
@@ -1117,25 +1180,34 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>900</x>
-      <y>520</y>
-      <width>381</width>
-      <height>201</height>
+      <y>510</y>
+      <width>371</width>
+      <height>211</height>
      </rect>
     </property>
     <property name="frameShape">
-     <enum>QFrame::WinPanel</enum>
+     <enum>QFrame::Panel</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>5</number>
     </property>
     <widget class="QLabel" name="label_6">
      <property name="geometry">
       <rect>
        <x>20</x>
        <y>0</y>
-       <width>161</width>
-       <height>31</height>
+       <width>181</width>
+       <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
       <string>Challenge Record</string>
@@ -1145,19 +1217,24 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>30</y>
-       <width>361</width>
+       <y>40</y>
+       <width>351</width>
        <height>161</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial Rounded MT Bold</family>
+      </font>
      </property>
      <property name="html">
       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;vs. Mary == Win&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;vs. Tony == Denied.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;vs. Antonio == Deny &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial Rounded MT Bold'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:9pt;&quot;&gt;vs. Mary == Win&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:9pt;&quot;&gt;vs. Tony == Denied.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:9pt;&quot;&gt;vs. Antonio == Deny &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </widget>
@@ -1169,6 +1246,12 @@ p, li { white-space: pre-wrap; }
       <width>301</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="lineWidth">
+     <number>2</number>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
@@ -1185,6 +1268,7 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="font">
      <font>
+      <family>Consolas</family>
       <pointsize>10</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -1193,6 +1277,94 @@ p, li { white-space: pre-wrap; }
     <property name="text">
      <string>Hint</string>
     </property>
+   </widget>
+   <widget class="QFrame" name="frame_12">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>40</y>
+      <width>221</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>5</number>
+    </property>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>0</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Playin' as</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frame_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>201</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:brown</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Panel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="lineWidth">
+      <number>3</number>
+     </property>
+     <widget class="QLabel" name="playingusername">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>10</y>
+        <width>201</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial Rounded MT Bold</family>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>None</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
