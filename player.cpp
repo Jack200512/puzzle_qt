@@ -3,85 +3,73 @@
 #include <QCoreApplication>
 #include <QDebug>
 
-//when creating a qobject class , qmake should be run.
-player::player(QString nameinput,QObject *parent):QObject(parent)
+// when creating a qobject class , qmake should be run.
+player::player(QString nameinput, QObject *parent) : QObject(parent)
 {
     username = nameinput; // set up username
 
-    //the file operations below
+    // the file operations below
 
-    QString basedir = QCoreApplication::applicationDirPath()+"/userdata";
-    //base dir is the build/debug , where .exe lay.
+    QString basedir = QCoreApplication::applicationDirPath() + "/userdata";
+    // base dir is the build/debug , where .exe lay.
 
-    userfolderpath = basedir + "/" +username;
+    userfolderpath = basedir + "/" + username;
 
     QDir dir(basedir);
-    if(!dir.exists())
+    if (!dir.exists())
     {
         dir.mkpath(".");
     }
 
     QDir userdir(userfolderpath);
-    if(!userdir.exists())
+    if (!userdir.exists())
     {
-        if(userdir.mkpath("."))
+        if (userdir.mkpath("."))
         {
-            qDebug() << "success" ;
+            qDebug() << "success";
         }
         else
         {
             qDebug() << "fail";
             return;
         }
-
     }
 
     scorelistpath = userfolderpath + "/scorelist.txt";
     challerecordpath = userfolderpath + "/challerecord.txt";
 
     QFile scorelist(scorelistpath);
-    if(!scorelist.exists())
+    if (!scorelist.exists())
     {
-        if(scorelist.open(QIODevice::WriteOnly | QIODevice ::Text))
+        if (scorelist.open(QIODevice::WriteOnly | QIODevice ::Text))
         {
             scorelist.close();
-            qDebug() << "success" ;
+            qDebug() << "success";
         }
         else
         {
-            qDebug() << "fail" ;
+            qDebug() << "fail";
         }
-
     }
 
     QFile challe(challerecordpath);
-    if(!challe.exists())
+    if (!challe.exists())
     {
-        if(challe.open(QIODevice :: WriteOnly | QIODevice ::Text))
+        if (challe.open(QIODevice ::WriteOnly | QIODevice ::Text))
         {
 
             challe.close();
-            qDebug()<<" success "<<challerecordpath;
-
+            qDebug() << " success " << challerecordpath;
         }
         else
         {
-            qDebug()<<"fail" ;
+            qDebug() << "fail";
         }
     }
 
-    //end of the file operations.
+    // end of the file operations.
 
     dialogptr = nullptr;
 
     challenger = nullptr;
-
 }
-
-//void player::updatehighestscore(int time, int step)
-//{
-//    shortesttime = time;
-//    shorteststep = step;
-//}
-
-

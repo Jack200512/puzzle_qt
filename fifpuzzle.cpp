@@ -821,6 +821,11 @@ void fifpuzzle::playerselected(int index)
     savetochallentxt();
     playingplr = playercreated[index];
 
+    timeinsecond = 0;
+    ui->timecount->display(0);
+    stepcount = 0;
+    ui->stepcounter->display(0);
+
 
     readfromthescorelist();
 
@@ -1164,6 +1169,12 @@ void fifpuzzle::showthebat_res_playing()
     //if in the state of battle, then enter the judgement phase;
     if(playingplr->dialogptr != nullptr)
     {
+        //save the challenge record for the challenger
+        player * container = playingplr;
+        playingplr = playingplr->challenger;
+        savetochallentxt();
+        playingplr = container;
+
         if(playingplr->dialogptr->state != -1)
         {
             playingplr->dialogptr->challenger->dialogptr = nullptr;//release the dialogptr
@@ -1178,7 +1189,7 @@ void fifpuzzle::showthebat_res_playing()
     {
         ui->challen_rec->append(playingplr->challenge_msg[i]);
     }
-    ui->challen_rec->moveCursor(QTextCursor::Start);
+//    ui->challen_rec->moveCursor(QTextCursor::Start);
 }
 
 void fifpuzzle::challen_dn()
@@ -1200,6 +1211,9 @@ void fifpuzzle::challen_dn()
     QString ac = "challenge denied!";
     playingplr->messages_boxvec.push_back(ac);
     updatemsgbx();
+
+    QString ac2 = "challenge denied by "+playingplr->username;
+    playingplr->challenger->messages_boxvec.push_back(ac2);
 }
 
 void fifpuzzle::readfromchallentxt()
@@ -1352,6 +1366,7 @@ void fifpuzzle::updatemsgbx()
 fifpuzzle::~fifpuzzle()
 {
     savescoretotxt();
+    savetochallentxt();
     updateuserlistbeforecolse();
     delete ui;
 }
